@@ -6,9 +6,5 @@
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 631-326-424
-127.0.0.1 - - [10/May/2026 15:19:13] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [10/May/2026 15:19:14] "POST /generate HTTP/1.1" 200 -
- * Detected change in '/app/seo_authority_engine/app.py', reloading
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 631-326-424
+127.0.0.1 - - [10/May/2026 15:34:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/May/2026 15:34:13] "POST /generate HTTP/1.1" 200 -
