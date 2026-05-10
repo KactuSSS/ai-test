@@ -3,78 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuthorityStream | SEO Authority Engine</title>
+    <title>AuthorityStream | Professional E-E-A-T Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        body { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .gradient-text {
+            background: linear-gradient(90deg, #4F46E5, #9333EA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans leading-normal tracking-normal">
+<body class="bg-slate-50 text-slate-900 min-h-screen">
 
     <!-- Navigation -->
-    <nav class="flex items-center justify-between flex-wrap p-6 bg-white shadow-sm">
-        <div class="flex items-center flex-shrink-0 text-indigo-600 mr-6">
-            <span class="font-bold text-xl tracking-tight">AuthorityStream</span>
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200 py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <span class="font-bold text-xl tracking-tight">AuthorityStream</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+                <a href="#" class="hover:text-indigo-600 transition">How it works</a>
+                <a href="#" class="hover:text-indigo-600 transition">Pricing</a>
+            </div>
+            <a href="#generate" class="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate-800 transition">Get Started</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="gradient-bg py-24 px-6 text-center text-white">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Generate High-Authority SEO Assets</h1>
-        <p class="text-xl mb-8">Stop publishing generic AI content. Start building E-E-A-T with deep-dive industry reports.</p>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container mx-auto -mt-12 px-4 pb-12">
-        <div class="bg-white rounded-lg shadow-xl p-8 max-w-4xl mx-auto">
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="topic">
-                    Industry Topic
-                </label>
-                <input id="topic" type="text" placeholder="e.g. Sustainable Construction, Fintech for Gen Z"
-                    class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <div class="mb-6">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="data_points">
-                    Core Data Points / Trends (comma separated)
-                </label>
-                <textarea id="data_points" rows="3" placeholder="e.g. rising interest rates, material shortages, green regulations"
-                    class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-            </div>
-            <div class="flex items-center justify-center">
-                <button id="generateBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-10 rounded-full focus:outline-none focus:shadow-outline transition duration-300">
-                    Generate Authority Asset
-                </button>
+    <!-- Hero -->
+    <section class="relative pt-20 pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                    Dominate SEO with <span class="gradient-text">Authority Assets</span>
+                </h1>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+                    Stop publishing generic AI fluff. Generate data-backed industry reports, whitepapers, and case studies that satisfy Google's E-E-A-T criteria in seconds.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#generate" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition">Generate Report</a>
+                    <button class="bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition">View Samples</button>
+                </div>
             </div>
         </div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+            <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        </div>
+    </section>
 
-        <!-- Result Section -->
-        <div id="result" class="hidden mt-12 bg-white rounded-lg shadow-xl p-8 max-w-4xl mx-auto border-t-8 border-indigo-500">
-            <h2 id="resultTitle" class="text-3xl font-bold mb-6 text-indigo-800"></h2>
-            <div id="resultContent" class="prose prose-indigo max-w-none">
-                <!-- Sections will be injected here -->
+    <!-- Generator Section -->
+    <section id="generate" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl text-white">
+                <h2 class="text-3xl font-bold mb-8">Authority Asset Generator</h2>
+
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-slate-400 text-sm font-medium mb-2 uppercase tracking-wider">Industry Topic</label>
+                        <input id="topic" type="text" placeholder="e.g. The Future of Sustainable Fintech in 2025"
+                            class="w-full bg-slate-800 border border-slate-700 rounded-xl py-4 px-6 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-400 text-sm font-medium mb-2 uppercase tracking-wider">Core Data Points / Trends</label>
+                        <textarea id="data_points" rows="4" placeholder="e.g. 40% increase in green bonds, 2024 regulatory changes, rise of AI in ESG reporting"
+                            class="w-full bg-slate-800 border border-slate-700 rounded-xl py-4 px-6 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button id="generateBtn" class="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-5 rounded-xl shadow-xl shadow-indigo-900/20 transition-all flex items-center justify-center space-x-2">
+                            <span>Synthesize Authority Asset</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div id="resultContainer" class="hidden mt-12 space-y-8 animate-in fade-in duration-700">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-2xl font-bold text-slate-900">Generated Asset</h3>
+                    <div class="flex space-x-3">
+                        <button id="copyBtn" class="text-sm font-semibold text-slate-600 hover:text-indigo-600 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                            Copy Markdown
+                        </button>
+                        <button id="downloadBtn" class="text-sm font-semibold bg-indigo-50 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-100 transition">
+                            Download Report
+                        </button>
+                    </div>
+                </div>
+
+                <article id="resultArea" class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm prose prose-indigo max-w-none">
+                    <!-- Content injected here -->
+                </article>
+
+                <div class="bg-indigo-600 rounded-2xl p-8 text-white flex flex-col md:flex-row items-center justify-between">
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Love the quality?</h4>
+                        <p class="text-indigo-100">Get 3 more high-authority assets for your clients today.</p>
+                    </div>
+                    <button onclick="alert('Contact us at your-email@example.com to request a Payoneer payment link or bank details for 3 Credits ($250).')" class="mt-4 md:mt-0 bg-white text-indigo-600 px-8 py-3 rounded-xl font-bold hover:bg-indigo-50 transition">
+                        Get 3 Credits ($250)
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 AuthorityStream. Built for high-performance SEO agencies.</p>
+        </div>
+    </footer>
 
     <script>
-        document.getElementById('generateBtn').addEventListener('click', async () => {
+        const btn = document.getElementById('generateBtn');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultArea = document.getElementById('resultArea');
+        const copyBtn = document.getElementById('copyBtn');
+
+        let currentMarkdown = "";
+
+        btn.addEventListener('click', async () => {
             const topic = document.getElementById('topic').value;
             const data_points = document.getElementById('data_points').value;
-            const btn = document.getElementById('generateBtn');
-            const resultDiv = document.getElementById('result');
-            const resultContent = document.getElementById('resultContent');
-            const resultTitle = document.getElementById('resultTitle');
 
             if (!topic || !data_points) {
-                alert('Please fill in both fields');
+                alert('Please provide a topic and some data points.');
                 return;
             }
 
-            btn.innerText = 'Analyzing & Generating...';
             btn.disabled = true;
+            btn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white mr-3" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Synthesizing Expert Analysis...</span>
+            `;
 
             try {
                 const response = await fetch('/generate', {
@@ -86,25 +171,57 @@
                 const data = await response.json();
 
                 if (data.error) {
-                    alert(data.error);
+                    alert('Error: ' + data.error);
                 } else {
-                    resultTitle.innerText = data.title;
-                    resultContent.innerHTML = data.sections.map(s => `
-                        <div class="mb-6">
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">${s.title}</h3>
-                            <p class="text-gray-600 leading-relaxed">${s.content}</p>
-                        </div>
-                    `).join('');
-                    resultDiv.classList.remove('hidden');
-                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                    renderResult(data);
+                    resultContainer.classList.remove('hidden');
+                    resultContainer.scrollIntoView({ behavior: 'smooth' });
                 }
             } catch (err) {
-                console.error(err);
-                alert('An error occurred while generating the asset.');
+                alert('Connection error. Please try again.');
             } finally {
-                btn.innerText = 'Generate Authority Asset';
                 btn.disabled = false;
+                btn.innerHTML = '<span>Synthesize Authority Asset</span>';
             }
+        });
+
+        function renderResult(data) {
+            let html = `<h1 class="text-4xl font-bold mb-8 text-slate-900">${data.title}</h1>`;
+            let md = `# ${data.title}\n\n`;
+
+            data.sections.forEach(s => {
+                html += `
+                    <div class="mb-10">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-4">${s.title}</h2>
+                        <p class="text-slate-600 leading-relaxed text-lg">${s.content.replace(/\n/g, '<br>')}</p>
+                    </div>
+                `;
+                md += `## ${s.title}\n\n${s.content}\n\n`;
+            });
+
+            resultArea.innerHTML = html;
+            currentMarkdown = md;
+        }
+
+        copyBtn.addEventListener('click', () => {
+            if (!currentMarkdown) return;
+            navigator.clipboard.writeText(currentMarkdown);
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = 'Copied!';
+            setTimeout(() => copyBtn.innerHTML = originalText, 2000);
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (!currentMarkdown) return;
+            const blob = new Blob([currentMarkdown], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'authority-report.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         });
     </script>
 </body>

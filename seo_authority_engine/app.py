@@ -16,52 +16,79 @@ def get_openai_client():
 
 def generate_authority_asset(topic, data_points):
     """
-    Generates an authority asset using OpenAI.
+    Generates a high-authority industry report using OpenAI.
+    Focused on E-E-A-T: Experience, Expertise, Authoritativeness, and Trustworthiness.
     """
     if not os.getenv("OPENAI_API_KEY"):
-        # Fallback to mock for testing without key
+        # Fallback to high-quality mock for testing
         return {
-            "title": f"Industrial Report: The Future of {topic.title()} (DEMO)",
+            "title": f"Strategic Analysis: The 2025 Evolution of {topic.title()}",
             "sections": [
-                {"title": "Introduction", "content": f"The landscape of {topic} is evolving rapidly..."},
-                {"title": "Key Data Points", "content": f"We identified: {data_points}"},
-                {"title": "Expert Conclusion", "content": "Organizations must focus on authority."}
+                {
+                    "title": "Executive Summary",
+                    "content": f"The {topic} sector is undergoing a fundamental shift. Based on trends such as {data_points}, we see a move towards integrated authority models."
+                },
+                {
+                    "title": "Methodology & Data Synthesis",
+                    "content": f"Our analysis incorporates real-time indicators including: {data_points}. This methodology ensures a high degree of expert-level accuracy."
+                },
+                {
+                    "title": "Strategic Recommendations",
+                    "content": "1. Prioritize data transparency. 2. Implement authority-first content cycles. 3. Focus on trust-building via verifiable expertise."
+                },
+                {
+                    "title": "Conclusion: The Authority Imperative",
+                    "content": "To survive the next wave of search engine updates, organizations must transition from generic content to high-authority assets."
+                }
             ]
         }
 
     prompt = f"""
-    Generate a high-authority industry report (SEO Authority Asset) for the following topic and data points.
+    You are a Senior B2B Content Strategist and Industry Analyst specializing in E-E-A-T (Experience, Expertise, Authoritativeness, and Trustworthiness).
+
+    Task: Generate a deep-dive, professional industry report (Whitepaper style).
     Topic: {topic}
-    Key Data Points: {data_points}
+    Core Data Points/Trends to Include: {data_points}
+
+    Requirements:
+    - Tone: Academic, professional, and authoritative.
+    - Insight: Provide unique strategic perspectives that go beyond surface-level AI summaries.
+    - Structure: Must be exactly 4-5 substantial sections.
 
     The response must be in JSON format with the following structure:
     {{
-        "title": "A compelling, high-authority report title",
+        "title": "A compelling, high-authority academic/industry report title",
         "sections": [
-            {{ "title": "Introduction", "content": "..." }},
-            {{ "title": "Data Analysis & Methodology", "content": "..." }},
-            {{ "title": "Strategic Insights", "content": "..." }},
-            {{ "title": "Expert Conclusion", "content": "..." }}
+            {{
+                "title": "Executive Summary",
+                "content": "Deep analysis of the current state of the topic..."
+            }},
+            {{
+                "title": "Market Dynamics & Data Synthesis",
+                "content": "Deep dive into the provided data points and their implications..."
+            }},
+            {{
+                "title": "Strategic Implications for Stakeholders",
+                "content": "Actionable, expert-level advice based on the trends..."
+            }},
+            {{
+                "title": "Future Outlook & Projections",
+                "content": "Where the industry is heading in the next 12-24 months..."
+            }},
+            {{
+                "title": "Concluding Synthesis",
+                "content": "A final authoritative take on why this matters now."
+            }}
         ]
     }}
-    Ensure the content is deep, professional, and satisfies Google's E-E-A-T criteria.
+    Ensure each 'content' block is at least 3-4 paragraphs of high-value text.
     """
 
     client = get_openai_client()
-    if not client:
-         return {
-            "title": f"Industrial Report: The Future of {topic.title()} (DEMO)",
-            "sections": [
-                {"title": "Introduction", "content": f"The landscape of {topic} is evolving rapidly..."},
-                {"title": "Key Data Points", "content": f"We identified: {data_points}"},
-                {"title": "Expert Conclusion", "content": "Organizations must focus on authority."}
-            ]
-        }
-
     try:
         response = client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[{"role": "system", "content": "You are a specialized B2B content strategist."},
+            messages=[{"role": "system", "content": "You are a world-class B2B analyst and industry researcher."},
                       {"role": "user", "content": prompt}],
             response_format={ "type": "json_object" }
         )
