@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuthorityStream | SEO Authority Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans leading-normal tracking-normal">
+
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between flex-wrap p-6 bg-white shadow-sm">
+        <div class="flex items-center flex-shrink-0 text-indigo-600 mr-6">
+            <span class="font-bold text-xl tracking-tight">AuthorityStream</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="gradient-bg py-24 px-6 text-center text-white">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Generate High-Authority SEO Assets</h1>
+        <p class="text-xl mb-8">Stop publishing generic AI content. Start building E-E-A-T with deep-dive industry reports.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto -mt-12 px-4 pb-12">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-4xl mx-auto">
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="topic">
+                    Industry Topic
+                </label>
+                <input id="topic" type="text" placeholder="e.g. Sustainable Construction, Fintech for Gen Z"
+                    class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="data_points">
+                    Core Data Points / Trends (comma separated)
+                </label>
+                <textarea id="data_points" rows="3" placeholder="e.g. rising interest rates, material shortages, green regulations"
+                    class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+            <div class="flex items-center justify-center">
+                <button id="generateBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-10 rounded-full focus:outline-none focus:shadow-outline transition duration-300">
+                    Generate Authority Asset
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result" class="hidden mt-12 bg-white rounded-lg shadow-xl p-8 max-w-4xl mx-auto border-t-8 border-indigo-500">
+            <h2 id="resultTitle" class="text-3xl font-bold mb-6 text-indigo-800"></h2>
+            <div id="resultContent" class="prose prose-indigo max-w-none">
+                <!-- Sections will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', async () => {
+            const topic = document.getElementById('topic').value;
+            const data_points = document.getElementById('data_points').value;
+            const btn = document.getElementById('generateBtn');
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            const resultTitle = document.getElementById('resultTitle');
+
+            if (!topic || !data_points) {
+                alert('Please fill in both fields');
+                return;
+            }
+
+            btn.innerText = 'Analyzing & Generating...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ topic, data_points })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    resultTitle.innerText = data.title;
+                    resultContent.innerHTML = data.sections.map(s => `
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">${s.title}</h3>
+                            <p class="text-gray-600 leading-relaxed">${s.content}</p>
+                        </div>
+                    `).join('');
+                    resultDiv.classList.remove('hidden');
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                }
+            } catch (err) {
+                console.error(err);
+                alert('An error occurred while generating the asset.');
+            } finally {
+                btn.innerText = 'Generate Authority Asset';
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
